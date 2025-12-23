@@ -47,9 +47,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gray-900 dark:bg-white rounded-full flex items-center justify-center">
-              <span className="text-white dark:text-black text-xl">👤</span>
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-900 dark:text-white">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+              </svg>
             </div>
           </Link>
 
@@ -71,11 +75,10 @@ export default function Navbar() {
                   key={item.path}
                   href={item.path}
                   data-nav-item
-                  className={`px-3 py-2 text-sm rounded-lg transition-colors relative z-10 ${
-                    pathname === item.path
-                      ? 'text-gray-900 dark:text-white'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                  }`}
+                  className={`px-3 py-2 text-sm rounded-lg transition-colors relative z-10 ${pathname === item.path
+                    ? 'text-gray-900 dark:text-white'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    }`}
                 >
                   {item.label}
                 </Link>
