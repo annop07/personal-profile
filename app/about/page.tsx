@@ -6,6 +6,13 @@ import { workExperiences } from '../data/workExperience';
 import Footer from '../components/Footer';
 import PageTransition from '../components/PageTransition';
 import { FadeInSection } from '../utils/FadeInSection';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'Computer Science at Khon Kaen University, teaching assistant for two core CS courses, software engineer intern at Gofive, and freelance developer shipping an Odoo ERP a retail store and a water factory use every day.',
+};
 
 export default function AboutPage() {
   return (

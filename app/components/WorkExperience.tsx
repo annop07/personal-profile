@@ -100,8 +100,13 @@ export default function WorkExperience({ experiences }: WorkExperienceProps) {
                                                 {experience.position}
                                             </p>
                                         </div>
-                                        <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                            {experience.duration}
+                                        <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-right">
+                                            <span className="whitespace-nowrap">{experience.duration}</span>
+                                            {experience.location && (
+                                                <span className="block text-xs text-gray-400 dark:text-gray-500">
+                                                    {experience.location}
+                                                </span>
+                                            )}
                                         </span>
                                     </div>
                                 </div>

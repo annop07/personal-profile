@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -11,6 +12,38 @@ export function generateStaticParams() {
     return projectsData.map((project) => ({
         slug: project.slug,
     }));
+}
+
+export async function generateMetadata(
+    { params }: { params: Promise<{ slug: string }> },
+): Promise<Metadata> {
+    const { slug } = await params;
+    const project = getProjectBySlug(slug);
+    if (!project) return {};
+
+    /* Most scrapers will not render an SVG, so the diagram covers fall back to
+       the site card. Screenshot covers are already PNG or JPG. */
+    const ogImage = project.image.endsWith('.svg') ? '/og.png' : project.image;
+    const description = project.metric
+        ? `${project.metric.value} — ${project.metric.label}. ${project.description}`
+        : project.description;
+
+    return {
+        title: project.title,
+        description,
+        openGraph: {
+            title: `${project.title} · Annop Sangsila`,
+            description,
+            url: `/projects/${project.slug}`,
+            images: [{ url: ogImage, alt: project.title }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${project.title} · Annop Sangsila`,
+            description,
+            images: [ogImage],
+        },
+    };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {

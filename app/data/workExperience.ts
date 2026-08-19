@@ -4,6 +4,7 @@ export interface WorkExperience {
     position: string;
     type: 'Internship' | 'Part-time' | 'Full-time' | 'Freelance' | 'Competition';
     duration: string;
+    location?: string;
     description: string[];
     images?: string[];
     techStack?: string[];
@@ -12,15 +13,41 @@ export interface WorkExperience {
 
 export const workExperiences: WorkExperience[] = [
     {
+        company: 'Gofive',
+        logo: '',
+        position: 'Software Engineer Intern',
+        type: 'Internship',
+        duration: 'Apr 2026 - Jun 2026',
+        location: 'Bangkok, Thailand',
+        description: [
+            'Developed a multi-database architecture that isolates client data across separate databases for enterprise-scale tenants.',
+            'Worked inside a large production codebase and its release workflow, collaborating with engineers across teams.',
+        ],
+    },
+    {
+        company: 'Khon Kaen University',
+        logo: '',
+        position: 'Teaching Assistant',
+        type: 'Part-time',
+        duration: 'Nov 2025 - Present',
+        location: 'Khon Kaen, Thailand',
+        description: [
+            'Selected to assist two core CS courses — Object-Oriented Programming (Nov 2025 – Mar 2026) and Data Structures (Jun – Oct 2026).',
+            'Run lab sessions and review student code, giving written feedback on design and correctness.',
+        ],
+    },
+    {
         company: 'Todoview',
         logo: '/photos/Odoo-photo/0.logo.jpg',
-        position: 'Odoo ERP Developer',
+        position: 'Freelance Software Developer',
         type: 'Freelance',
-        duration: 'Jun 2025 - Aug 2025',
+        duration: 'Jun 2025 - Present',
+        location: 'Remote, Thailand',
         description: [
-            'Developed custom Odoo modules for Subscription Management System, enabling automated recurring billing and subscription lifecycle management for enterprise clients.',
-            'Created custom invoice automation workflows that streamlined billing processes, reducing manual invoice generation time by implementing automated triggers and email notifications.',
-            'Designed and implemented subscription tracking dashboard with real-time analytics for monitoring active subscriptions, revenue metrics, and customer retention rates.',
+            'Built a custom Odoo 19 POS (Python, JavaScript/OWL, PostgreSQL 17) unifying point-of-sale, inventory, purchasing and HR across 8 in-house modules — multi-warehouse receiving, FEFO lot and expiry handling, and PO replenishment from the stock screen with supplier cost history.',
+            'Built daily price planning with a full changelog and an export that pushes prices to in-store DIGI SM-100EV label scales; added manager-only discount control, PromptPay QR payments and Thai VAT-summary receipts.',
+            'Covered inventory and pricing with Python unit tests and 11 Playwright E2E specs, deployed via Docker Compose across separate dev and production environments.',
+            'Also built the same client’s water-distribution ERP — QR-scanned delivery tracking (zxing-browser) with a full audit log and role-based access across 4 roles.',
         ],
         images: [
             '/photos/Odoo-photo/1.main.png',
@@ -31,7 +58,7 @@ export const workExperiences: WorkExperience[] = [
             '/photos/Odoo-photo/6.create-subscription.png',
             '/photos/Odoo-photo/odoo-email.png',
         ],
-        techStack: ['Odoo', 'Python', 'PostgreSQL', 'XML', 'JavaScript', 'QWeb'],
+        techStack: ['Odoo 19', 'Python', 'JavaScript / OWL', 'PostgreSQL 17', 'QWeb', 'Playwright', 'Docker Compose'],
     },
     {
         company: 'TBL (Thai Beverage Logistics)',
@@ -46,7 +73,7 @@ export const workExperiences: WorkExperience[] = [
     },
     {
         company: 'PTT Soft Power Project',
-        logo: '/photos/ptt/ptt.jpg', 
+        logo: '/photos/ptt/ptt.jpg',
         position: 'TGIF – Technology Is Fun: Next-Gen Technology Upskilling Program',
         type: 'Competition',
         duration: 'Jul 2023',
@@ -54,5 +81,5 @@ export const workExperiences: WorkExperience[] = [
             'Participated in the TGIF – Technology Is Fun program under the PTT Soft Power Project University Road Show, gaining exposure to emerging digital technologies, industry trends, and the application of technology to support creative economy and soft power development.',
         ],
         link: 'https://www.kku.ac.th/th/149872/',
-    }
+    },
 ];

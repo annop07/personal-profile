@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# personal-profile
 
-## Getting Started
+Portfolio site for **Annop Sangsila** — AI Engineer / Full-Stack Developer.
+Next.js 16 (App Router, Turbopack), React 19, Tailwind CSS v4, TypeScript.
 
-First, run the development server:
+Live pages: `/` (projects + skills), `/about` (timeline, work experience), `/contact`,
+and a generated page per project at `/projects/[slug]`.
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build — 18 static pages
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Layout
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+app/
+├── data/
+│   ├── projects.ts         ← every project; category 'ai' | 'fullstack'
+│   └── workExperience.ts   ← jobs and competitions shown on /about
+├── components/             ← Navbar, HeroSection, FeaturedProjects, TechnicalSkills, …
+├── projects/[slug]/        ← one static page per entry in projects.ts
+└── layout.tsx              ← site metadata, Open Graph, theme provider
+public/
+├── covers/                 ← architecture diagrams for projects with no UI (SVG)
+├── photos/                 ← screenshots, grouped per project
+└── og.png                  ← 1200×630 social preview card
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Adding a project
 
-## Learn More
+Append an entry to `app/data/projects.ts`. `generateStaticParams` picks it up and
+builds the page; nothing else needs editing.
 
-To learn more about Next.js, take a look at the following resources:
+- `category: 'ai'` renders as a full card at the top of the home page,
+  `'fullstack'` renders as a compact row underneath.
+- `metric` is the headline number on the card — keep `value` short and let
+  `label` carry the context. It is plain text on purpose, so it stays
+  selectable, searchable and readable by a screen reader.
+- `image` may be a screenshot from `public/photos/` or a diagram from
+  `public/covers/`. SVG is allowed (`next.config.ts` opts in) but social
+  previews fall back to `og.png`, because most scrapers will not render SVG.
+- `highlights` become the "What it demonstrates" list on the project page;
+  `images` become the screenshot gallery and may be empty.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set `NEXT_PUBLIC_SITE_URL` to the production origin so canonical and Open Graph
+URLs resolve. On Vercel this falls back to `VERCEL_PROJECT_PRODUCTION_URL`
+automatically, and locally to `http://localhost:3000`.

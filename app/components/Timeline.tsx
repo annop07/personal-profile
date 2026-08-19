@@ -19,7 +19,7 @@ export default function Timeline() {
       company: 'Khon Kaen University',
       role: 'B.S. Computer Science',
       period: '2023 - Now',
-      description: 'got my degree to make my parents proud',
+      description: 'GPA 3.42 — and a degree to make my parents proud',
       color: 'yellow',
     }
   ];
