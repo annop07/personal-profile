@@ -88,12 +88,45 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                             </div>
                         </div>
 
+                        {/* Headline number */}
+                        {project.metric && (
+                            <div className="mb-6 flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-xl border border-gray-300 bg-gray-100 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900/50">
+                                <span className="text-2xl font-semibold tabular-nums tracking-tight text-gray-900 dark:text-white">
+                                    {project.metric.value}
+                                </span>
+                                <span className="text-xs text-gray-500 dark:text-gray-500">
+                                    {project.metric.label}
+                                </span>
+                            </div>
+                        )}
+
                         {/* Description */}
                         <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-8">
                             {project.longDescription}
                         </p>
 
+                        {/* Highlights */}
+                        {project.highlights && project.highlights.length > 0 && (
+                            <div className="mb-10 space-y-4">
+                                <h2 className="text-lg font-medium text-gray-900 dark:text-white">
+                                    What it demonstrates
+                                </h2>
+                                <ul className="space-y-2.5">
+                                    {project.highlights.map((highlight) => (
+                                        <li
+                                            key={highlight}
+                                            className="flex gap-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400"
+                                        >
+                                            <span className="mt-[9px] h-1 w-1 flex-shrink-0 rounded-full bg-gray-400 dark:bg-zinc-600" />
+                                            <span>{highlight}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
                         {/* Example Images */}
+                        {project.images.length > 0 && (
                         <div className="space-y-4">
                             <h2 className="text-lg font-medium text-gray-900 dark:text-white">Example Images:</h2>
                             <div className="space-y-4 not-prose">
@@ -115,6 +148,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                 ))}
                             </div>
                         </div>
+                        )}
                     </section>
 
                     <Footer />

@@ -3,7 +3,7 @@ import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
 import PageTransition from './components/PageTransition';
 import TechnicalSkills from './components/TechnicalSkills';
-import FeaturedProjects from './components/FeaturedProjects';
+import { AiProjects, FullStackProjects } from './components/FeaturedProjects';
 import { FadeInSection } from './utils/FadeInSection';
 
 export default function Home() {
@@ -18,11 +18,15 @@ export default function Home() {
             </FadeInSection>
 
             <FadeInSection delay={0.2}>
+              <AiProjects />
+            </FadeInSection>
+
+            <FadeInSection delay={0.3}>
               <TechnicalSkills />
             </FadeInSection>
 
-            <FadeInSection delay={0.4}>
-              <FeaturedProjects />
+            <FadeInSection delay={0.2}>
+              <FullStackProjects />
             </FadeInSection>
           </div>
 

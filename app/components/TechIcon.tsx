@@ -33,6 +33,10 @@ export default function TechIcon({ name, className = "w-8 h-8" }: TechIconProps)
         'Docker': 'docker',
         'Expo': 'react',
         'Cloudinary': 'gcp',
+        'Go': 'go',
+        'PyTorch': 'pytorch',
+        'GitHub': 'github',
+        'SQLite': 'sqlite',
     };
 
     const iconName = iconMap[name] || name.toLowerCase();
