@@ -6,9 +6,11 @@ interface SkillCategory {
     wide?: boolean;
 }
 
-const sparkles = (
+const chip = (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        <rect x="6" y="6" width="12" height="12" rx="2.5" strokeWidth={2} />
+        <rect x="10" y="10" width="4" height="4" rx="1" strokeWidth={2} />
+        <path strokeLinecap="round" strokeWidth={2} d="M9 4v2M15 4v2M9 18v2M15 18v2M4 9h2M4 15h2M18 9h2M18 15h2" />
     </svg>
 );
 
@@ -46,7 +48,7 @@ const wrench = (
 const skillCategories: SkillCategory[] = [
     {
         title: 'AI & ML',
-        icon: sparkles,
+        icon: chip,
         wide: true,
         skills: [
             'LLM APIs (tool calling)',
