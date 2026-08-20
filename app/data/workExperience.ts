@@ -9,6 +9,7 @@ export interface WorkExperience {
     images?: string[];
     techStack?: string[];
     link?: string;
+    linkLabel?: string;
 }
 
 export const workExperiences: WorkExperience[] = [
@@ -25,12 +26,11 @@ export const workExperiences: WorkExperience[] = [
         ],
         images: [
             '/photos/Go-Five/go5-1.jpg',
-            '/photos/Go-Five/Go5-2.png',
-            '/photos/Go-Five/Go5-3.png',
             '/photos/Go-Five/go5-4.jpg',
             '/photos/Go-Five/go5-5.jpg',
         ],
-        link: 'https://drive.google.com/drive/folders/1Cr_h4HQlIWPCz8RCJOXN6L9r9DDsuC4X?usp=sharing',
+        link: 'https://www.gofive.co.th/',
+        linkLabel: 'Company site',
     },
     {
         company: 'Khon Kaen University',
@@ -78,6 +78,7 @@ export const workExperiences: WorkExperience[] = [
             'Joined 10 SAI DEV Innovation Camp, working on developing a centralized logistics technology platform, applying development skills and innovative thinking to support digital transformation in logistics operations.',
         ],
         link: 'https://www.facebook.com/share/p/1BGsQXwEpt/',
+        linkLabel: 'News coverage',
     },
     {
         company: 'PTT Soft Power Project',
@@ -89,5 +90,6 @@ export const workExperiences: WorkExperience[] = [
             'Participated in the TGIF – Technology Is Fun program under the PTT Soft Power Project University Road Show, gaining exposure to emerging digital technologies, industry trends, and the application of technology to support creative economy and soft power development.',
         ],
         link: 'https://www.kku.ac.th/th/149872/',
+        linkLabel: 'KKU news',
     },
 ];
