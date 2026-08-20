@@ -2,14 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ScrollToTop from "./utils/ScrollToTop";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { siteUrl } from "./site";
 
-/* Set NEXT_PUBLIC_SITE_URL once the site has a domain; Vercel fills the
-   fallback in automatically on its own deployments. */
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
 
 const description =
   "AI engineer working on RAG, agentic systems and model fine-tuning — hybrid retrieval at 0.878 MRR, a QLoRA fine-tune at 0.96 exact-record accuracy, and an open-source package on PyPI.";
