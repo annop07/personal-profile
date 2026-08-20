@@ -18,11 +18,11 @@ export default function Home() {
             </FadeInSection>
 
             <FadeInSection delay={0.2}>
-              <AiProjects />
+              <TechnicalSkills />
             </FadeInSection>
 
             <FadeInSection delay={0.3}>
-              <TechnicalSkills />
+              <AiProjects />
             </FadeInSection>
 
             <FadeInSection delay={0.2}>

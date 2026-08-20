@@ -34,16 +34,11 @@ function ProjectCard({ project }: { project: ProjectData }) {
             </div>
 
             <div className="flex flex-1 flex-col p-4">
-                <div className="mb-2 flex items-start justify-between gap-3">
-                    <h3 className="text-sm font-medium text-gray-900 dark:text-white">
-                        <Link href={`/projects/${project.slug}`} className="after:absolute after:inset-0">
-                            {project.title}
-                        </Link>
-                    </h3>
-                    <span className="whitespace-nowrap text-xs text-gray-500 dark:text-gray-500">
-                        {project.date}
-                    </span>
-                </div>
+                <h3 className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <Link href={`/projects/${project.slug}`} className="after:absolute after:inset-0">
+                        {project.title}
+                    </Link>
+                </h3>
 
                 {project.metric && (
                     <p className="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
