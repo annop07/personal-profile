@@ -35,7 +35,7 @@ export const projectsData: ProjectData[] = [
             '133 tests green in CI, Docker Compose for the whole stack, and an eval harness checked into the repo so the numbers reproduce.',
             'Limitation stated in the README rather than hidden: Thai queries reach neither retrieval leg today.',
         ],
-        image: '/covers/enterprise-rag.svg',
+        image: '/covers/enterprise-rag-v2.svg',
         tags: ['FastAPI', 'PostgreSQL', 'pgvector', 'RRF', 'Cross-Encoder', 'Next.js', 'Docker'],
         techIcons: [
             { name: 'Python', color: 'bg-blue-400' },
@@ -63,7 +63,7 @@ export const projectsData: ProjectData[] = [
             'One prompt, one scorer, greedy decoding across all three configurations, so the only variable is the weights.',
             'A 400-token cap once made a capable model score 0.000; it was diagnosed as a measurement bug and documented instead of published as a result.',
         ],
-        image: '/covers/thai-slip-qlora.svg',
+        image: '/covers/thai-slip-qlora-v2.svg',
         tags: ['Python', 'PyTorch', 'Unsloth', 'PEFT / LoRA', 'Transformers', 'Colab T4'],
         techIcons: [
             { name: 'Python', color: 'bg-blue-400' },
@@ -87,7 +87,7 @@ export const projectsData: ProjectData[] = [
             '215 tests at 100% coverage, mypy --strict, CI across Python 3.10 through 3.13.',
             'Published and installable: pip install taintguard',
         ],
-        image: '/covers/taintguard.svg',
+        image: '/covers/taintguard-v2.svg',
         tags: ['Python', 'AI Security', 'pytest', 'mypy --strict', 'GitHub Actions', 'PyPI'],
         techIcons: [
             { name: 'Python', color: 'bg-blue-400' },
@@ -112,7 +112,7 @@ export const projectsData: ProjectData[] = [
             'The IMAP pipeline now reads email with an LLM and keeps regex only as a fallback — a sender it has never seen still parses correctly.',
             'Zero external infrastructure: SQLite plus embedded Qdrant, so the whole thing runs on a laptop.',
         ],
-        image: '/covers/savy-ai.svg',
+        image: '/covers/savy-ai-v2.svg',
         tags: ['FastAPI', 'Next.js', 'Vision LLM', 'Pydantic', 'Qdrant', 'RAG', 'SQLite'],
         techIcons: [
             { name: 'Python', color: 'bg-blue-400' },
@@ -146,7 +146,7 @@ export const projectsData: ProjectData[] = [
             'Aspect-based sentiment with hallucination guards, and RAG Q&A that filters citations to the brand actually asked about.',
             'Adding a new platform means adding one adapter file, not editing the crawler.',
         ],
-        image: '/covers/market-intel.svg',
+        image: '/covers/market-intel-v2.svg',
         tags: ['Go', 'Python', 'FastAPI', 'Qdrant', 'LLM Agent', 'Next.js'],
         techIcons: [
             { name: 'Go', color: 'bg-cyan-600' },
@@ -172,7 +172,7 @@ export const projectsData: ProjectData[] = [
             'Vector similarity search over stored records, exposed as its own endpoint.',
             'A Next.js dashboard to exercise every capability, so the service is demonstrable and not just documented.',
         ],
-        image: '/covers/ai-agent-service.svg',
+        image: '/covers/ai-agent-service-v2.svg',
         tags: ['FastAPI', 'Python', 'LLM', 'Tool Calling', 'Structured Output', 'Next.js'],
         techIcons: [
             { name: 'Python', color: 'bg-blue-400' },
