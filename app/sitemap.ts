@@ -2,6 +2,9 @@ import type { MetadataRoute } from 'next';
 import { projectsData } from './data/projects';
 import { siteUrl } from './site';
 
+// Required by `output: "export"` — emit the file at build time.
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
     const pages = [
         { path: '/', priority: 1 },
