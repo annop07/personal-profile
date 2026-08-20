@@ -24,7 +24,11 @@ export default function AboutPage() {
             <FadeInSection>
               <div className="section space-y-3">
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">About</h1>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Who I am.</p>
+                <p className="max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                  Computer Science at Khon Kaen University, where I now teach two of the core courses
+                  I once took. Along the way: an internship on enterprise SaaS at Gofive, and freelance
+                  work that put an ERP into daily use at a retail store and a water factory.
+                </p>
               </div>
             </FadeInSection>
 
