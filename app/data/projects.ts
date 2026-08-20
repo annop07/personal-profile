@@ -77,7 +77,13 @@ export const projectsData: ProjectData[] = [
             { name: 'PyTorch', color: 'bg-orange-600' },
         ],
         githubUrl: 'https://github.com/annop07/thai-slip-qlora',
-        images: [],
+        images: [
+            {
+                src: '/figures/qlora-benchmark.svg',
+                caption:
+                    'Scored by one harness that does not know which model wrote which file. Eighteen minutes of QLoRA on a free T4 takes a 1.5B model from 1.2% to 95.6% exact-record — level with deepseek-v3.2, a model a hundred times its size — and it emits clean JSON every single time where the API needs unwrapping from a code fence three times in four. The honest gap is the last row: on the two layouts held out of training it reaches 85.3% against the API\'s 94.7%, so it has learned to read a slip, but not yet as generally.',
+            },
+        ],
     },
     {
         slug: 'taintguard',
