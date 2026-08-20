@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { aiProjects, fullstackProjects, type ProjectData } from '../data/projects';
+import { BrandMark, hasBrandMark } from './BrandMark';
 
 function GithubIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
     return (
@@ -10,85 +11,66 @@ function GithubIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
     );
 }
 
-function GlobeIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
+function ArrowIcon({ className = 'h-3.5 w-3.5' }: { className?: string }) {
     return (
-        <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-6-6 6 6-6 6" />
         </svg>
     );
 }
 
-/* The card is one link target: the title anchor stretches over the whole article
-   via after:inset-0, so the external links can sit beside it instead of nested
-   inside it. */
-function ProjectCard({ project }: { project: ProjectData }) {
+/* No cover art: the stack marks say what it is built from and the footer says
+   what it measured, which is more of the argument in less vertical space than a
+   diagram thumbnail was making. The title anchor stretches over the whole
+   article via after:inset-0, so the card is a single tap target rather than a
+   hover-only affordance. */
+function AiProjectCard({ project }: { project: ProjectData }) {
+    const marks = project.techIcons.filter((icon) => hasBrandMark(icon.name)).slice(0, 6);
+
     return (
-        <article className="group relative flex flex-col overflow-hidden rounded-xl border border-gray-300 bg-gray-100 transition-all duration-300 hover:border-gray-400 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700">
-            <div className="relative h-40 overflow-hidden bg-zinc-950">
-                <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-            </div>
-
-            <div className="flex flex-1 flex-col p-4">
-                <h3 className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    <Link href={`/projects/${project.slug}`} className="after:absolute after:inset-0">
-                        {project.title}
-                    </Link>
-                </h3>
-
-                {project.metric && (
-                    <p className="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                        <span className="text-sm font-semibold tabular-nums text-gray-900 dark:text-white">
-                            {project.metric.value}
-                        </span>
-                        <span className="text-[11px] text-gray-500 dark:text-gray-500">
-                            {project.metric.label}
-                        </span>
-                    </p>
-                )}
-
-                <p className="mb-3 line-clamp-3 text-xs leading-relaxed text-gray-600 dark:text-gray-400">
-                    {project.description}
-                </p>
-
-                <div className="mb-3 flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                        <span
-                            key={tag}
-                            className="rounded bg-gray-200 px-2 py-1 text-xs text-gray-600 dark:bg-zinc-800 dark:text-gray-400"
-                        >
-                            {tag}
-                        </span>
+        <article
+            className={`group relative flex flex-col rounded-xl border p-5 transition-colors duration-200 ${
+                project.featured
+                    ? 'border-gray-400 bg-gray-50 hover:border-gray-500 dark:border-zinc-600 dark:bg-zinc-900 dark:hover:border-zinc-500'
+                    : 'border-gray-200 bg-white hover:border-gray-300 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700'
+            }`}
+        >
+            <div className="mb-4 flex items-start justify-between gap-3">
+                <div className="flex items-center gap-2.5">
+                    {marks.map((icon) => (
+                        <BrandMark key={icon.name} name={icon.name} />
                     ))}
                 </div>
-
-                <div className="relative z-10 mt-auto flex flex-wrap gap-2">
-                    {project.demoUrl && (
-                        <a
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-gray-300 dark:hover:bg-zinc-700"
-                        >
-                            <GlobeIcon />
-                            {project.demoUrl.includes('pypi.org') ? 'PyPI' : 'Website'}
-                        </a>
-                    )}
-                    <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full bg-gray-800 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-gray-700 dark:bg-zinc-700 dark:hover:bg-zinc-600"
-                    >
-                        <GithubIcon />
-                        Source
-                    </a>
-                </div>
+                {project.featured && (
+                    <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-400">
+                        Start here
+                    </span>
+                )}
             </div>
+
+            <h3 className="text-[15px] font-semibold leading-snug text-gray-900 dark:text-white">
+                <Link href={`/projects/${project.slug}`} className="after:absolute after:inset-0">
+                    {project.title}
+                </Link>
+            </h3>
+
+            <p className="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-gray-600 dark:text-gray-400">
+                {project.description}
+            </p>
+
+            {project.metric && (
+                <div className="mt-5 flex items-end justify-between gap-3 border-t border-gray-200 pt-3 dark:border-zinc-800">
+                    <div className="min-w-0">
+                        <p className="font-mono text-[13px] font-medium tabular-nums text-gray-900 dark:text-white">
+                            {project.metric.value}
+                        </p>
+                        <p className="mt-0.5 line-clamp-1 text-[11px] text-gray-600 dark:text-gray-400">
+                            {project.metric.label}
+                        </p>
+                    </div>
+                    <ArrowIcon className="mb-0.5 h-3.5 w-3.5 shrink-0 text-gray-400 transition-transform duration-200 group-hover:translate-x-0.5 dark:text-gray-500" />
+                </div>
+            )}
         </article>
     );
 }
@@ -141,15 +123,20 @@ export function AiProjects() {
     return (
         <section className="section">
             <div className="mb-6 space-y-1">
-                <h2 className="text-lg font-medium text-gray-900 dark:text-white">AI Engineering</h2>
-                <p className="text-xs text-gray-500 dark:text-gray-500">
+                <div className="flex items-baseline justify-between gap-4">
+                    <h2 className="text-lg font-medium text-gray-900 dark:text-white">AI Engineering</h2>
+                    <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">
+                        {aiProjects.length} projects
+                    </span>
+                </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                     Retrieval, agents and fine-tuning — each one measured against a held-out set, with the
                     evaluation harness in the repository.
                 </p>
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {aiProjects.map((project) => (
-                    <ProjectCard key={project.slug} project={project} />
+                    <AiProjectCard key={project.slug} project={project} />
                 ))}
             </div>
         </section>

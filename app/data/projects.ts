@@ -9,6 +9,9 @@ export interface ProjectData {
     longDescription: string;
     /** Headline number for the card. Kept short — the caption carries the context. */
     metric?: { value: string; label: string };
+    /** Marks the one project a first-time reader should open. Exactly one card
+        carries it, so the grid has an entry point instead of six equal tiles. */
+    featured?: boolean;
     highlights?: string[];
     image: string;
     tags: string[];
@@ -29,6 +32,7 @@ export const projectsData: ProjectData[] = [
         description: 'Document Q&A over internal files — hybrid retrieval (pgvector HNSW + Postgres full-text, fused by RRF) with cross-encoder re-ranking, streaming answers that cite the exact line they came from.',
         longDescription: 'A retrieval system built the way a search team would build it rather than the way a tutorial would. Documents are chunked and indexed twice — once as embeddings in pgvector with an HNSW index, once as a Postgres tsvector with a GIN index — and a single SQL query fuses both rankings with Reciprocal Rank Fusion before a cross-encoder re-ranks the survivors. Answers stream to the browser over SSE with line-level citations, and a citation guard refuses to answer rather than improvise when retrieval comes back empty. The repository ships the evaluation harness that produced its own numbers, so every claim on this page can be re-run.',
         metric: { value: '0.97 / 0.878', label: 'Recall@5 / MRR on a 30-question set' },
+        featured: true,
         highlights: [
             'Hybrid retrieval: vector and keyword legs fused by Reciprocal Rank Fusion inside one SQL query — no application-side merging.',
             'Cross-encoder re-ranking carries MRR from 0.640 (keyword only) and 0.673 (vector only) to 0.878.',
