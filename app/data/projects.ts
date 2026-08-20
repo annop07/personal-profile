@@ -47,7 +47,13 @@ export const projectsData: ProjectData[] = [
             { name: 'Docker', color: 'bg-blue-500' },
         ],
         githubUrl: 'https://github.com/annop07/YC-Enterprice-RAG',
-        images: [],
+        images: [
+            {
+                src: '/photos/enterprise-rag/answer-with-citations.png',
+                caption:
+                    'One question against the live index. Each source card carries its rank in both legs — vector #1 · keyword #8 — which is the whole point of running two: they disagree, and RRF settles it. Twenty fused candidates go to the cross-encoder, five survive into the prompt, and every claim in the answer links back to a line range in a named file.',
+            },
+        ],
     },
     {
         slug: 'thai-slip-qlora',
