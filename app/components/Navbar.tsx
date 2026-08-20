@@ -1,25 +1,26 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const subscribeToNothing = () => () => {};
+
+const navItems = [
+  { path: '/', label: 'Home' },
+  { path: '/about', label: 'About' },
+  { path: '/contact', label: 'Contact' },
+];
+
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' },
-  ];
+  /* The theme is only known on the client, so the toggle renders a placeholder
+     until hydration. useSyncExternalStore gives us that without a setState effect. */
+  const mounted = useSyncExternalStore(subscribeToNothing, () => true, () => false);
 
   useEffect(() => {
     const updateIndicator = () => {
