@@ -1,0 +1,10 @@
+{
+  "name": "personal-profile",
+  "compatibility_date": "2026-08-20",
+  // No Worker script: the site is a Next.js static export, so Workers only
+  // needs to serve the prerendered files that `next build` writes to ./out.
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
