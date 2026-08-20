@@ -10,6 +10,9 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  /* "./" resolves per route against metadataBase, so every page points at its
+     own apex URL and the www hostname never competes with it in search. */
+  alternates: { canonical: "./" },
   title: {
     default: "Annop Sangsila — AI Engineer",
     template: "%s · Annop Sangsila",
