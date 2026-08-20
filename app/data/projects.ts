@@ -193,7 +193,13 @@ export const projectsData: ProjectData[] = [
             { name: 'TS', color: 'bg-blue-500' },
         ],
         githubUrl: 'https://github.com/annop07/AI-Enginner',
-        images: [],
+        images: [
+            {
+                src: '/photos/ai-agent-service/usage-dashboard.png',
+                caption:
+                    'The dashboard over 34 real requests. Every call is metered — prompt and completion tokens split out per endpoint, latency per request, and the model that served it, across five different providers behind one interface. The agent chose its own tools on each /chat call; /extract returned a schema-validated object.',
+            },
+        ],
     },
 
     // ----------------------------------------------------------- FULL-STACK
