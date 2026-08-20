@@ -96,7 +96,18 @@ export const projectsData: ProjectData[] = [
         ],
         githubUrl: 'https://github.com/annop07/agentguard8',
         demoUrl: 'https://pypi.org/project/taintguard/',
-        images: [],
+        images: [
+            {
+                src: '/figures/taintguard-injection.svg',
+                caption:
+                    'The same agent, the same poisoned supplier email. Without the guard the injected account reaches transfer_money and 49,000 baht leaves the ledger; with it, the two honest calls still run and only the tainted one is refused — because to_account traces back to email:4821, not because the text looked suspicious.',
+            },
+            {
+                src: '/figures/taintguard-tests.svg',
+                caption:
+                    'Every statement and every branch is covered. Reproduce with pytest --cov=taintguard --cov-report=term-missing.',
+            },
+        ],
     },
     {
         slug: 'savy',
