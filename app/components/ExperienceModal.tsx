@@ -11,12 +11,9 @@ interface ExperienceModalProps {
 }
 
 export default function ExperienceModal({ experience, isOpen, onClose }: ExperienceModalProps) {
+    /* The parent keys this component by experience, so a fresh mount already
+       starts the gallery at the first image. */
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    // Reset image index when modal opens or experience changes
-    useEffect(() => {
-        setCurrentImageIndex(0);
-    }, [experience]);
 
     // Close on Escape key
     useEffect(() => {

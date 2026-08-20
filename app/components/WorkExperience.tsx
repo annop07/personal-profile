@@ -198,6 +198,7 @@ export default function WorkExperience({ experiences }: WorkExperienceProps) {
 
             {/* Modal */}
             <ExperienceModal
+                key={selectedExperience?.company ?? 'none'}
                 experience={selectedExperience}
                 isOpen={isModalOpen}
                 onClose={closeModal}
