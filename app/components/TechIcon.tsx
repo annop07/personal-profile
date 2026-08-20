@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 interface TechIconProps {
     name: string;
     className?: string;
