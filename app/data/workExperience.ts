@@ -14,7 +14,7 @@ export interface WorkExperience {
 export const workExperiences: WorkExperience[] = [
     {
         company: 'Gofive',
-        logo: '',
+        logo: '/logos/gofive.png',
         position: 'Software Engineer Intern',
         type: 'Internship',
         duration: 'Apr 2026 - Jun 2026',
@@ -23,10 +23,18 @@ export const workExperiences: WorkExperience[] = [
             'Developed a multi-database architecture that isolates client data across separate databases for enterprise-scale tenants.',
             'Worked inside a large production codebase and its release workflow, collaborating with engineers across teams.',
         ],
+        images: [
+            '/photos/Go-Five/go5-1.jpg',
+            '/photos/Go-Five/Go5-2.png',
+            '/photos/Go-Five/Go5-3.png',
+            '/photos/Go-Five/go5-4.jpg',
+            '/photos/Go-Five/go5-5.jpg',
+        ],
+        link: 'https://drive.google.com/drive/folders/1Cr_h4HQlIWPCz8RCJOXN6L9r9DDsuC4X?usp=sharing',
     },
     {
         company: 'Khon Kaen University',
-        logo: '',
+        logo: '/logos/khon-kaen-university.png',
         position: 'Teaching Assistant',
         type: 'Teaching Assistant',
         duration: 'Nov 2025 - Present',
