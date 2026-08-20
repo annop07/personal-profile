@@ -185,7 +185,13 @@ export const projectsData: ProjectData[] = [
             { name: 'TS', color: 'bg-blue-500' },
         ],
         githubUrl: 'https://github.com/annop07/market-intel',
-        images: [],
+        images: [
+            {
+                src: '/figures/market-intel-report.svg',
+                caption:
+                    'A report the pipeline produced on its nightly run. The left half is arithmetic — averages, a price index against the category median, percentiles — computed in SQL over the scraped catalogue, because a language model asked to average sixteen prices will confidently return a number that is close. The right half is the part a model is actually good at, and every line of it names the review it came from.',
+            },
+        ],
     },
     {
         slug: 'ai-agent-service',
