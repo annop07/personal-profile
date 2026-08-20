@@ -163,22 +163,36 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         <div className="space-y-4">
                             <h2 className="text-lg font-medium text-gray-900 dark:text-white">Example Images:</h2>
                             <div className="space-y-4 not-prose">
-                                {project.images.map((image, index) => (
-                                    <div
-                                        key={index}
-                                        className={`rounded-lg overflow-hidden ${project.slug === 'tinder-cat' || project.slug === 'doctora-mobile' ? 'max-w-xs mx-auto' : ''
-                                            }`}
-                                    >
-                                        <Image
-                                            src={image}
-                                            alt={`${project.title} screenshot ${index + 1}`}
-                                            width={1920}
-                                            height={1080}
-                                            className="w-full h-auto"
-                                            priority={index === 0}
-                                        />
-                                    </div>
-                                ))}
+                                {project.images.map((image, index) => {
+                                    const src = typeof image === 'string' ? image : image.src;
+                                    const caption = typeof image === 'string' ? null : image.caption;
+                                    return (
+                                        <figure
+                                            key={index}
+                                            className={
+                                                project.slug === 'tinder-cat' || project.slug === 'doctora-mobile'
+                                                    ? 'max-w-xs mx-auto'
+                                                    : ''
+                                            }
+                                        >
+                                            <div className="overflow-hidden rounded-lg">
+                                                <Image
+                                                    src={src}
+                                                    alt={caption ?? `${project.title} screenshot ${index + 1}`}
+                                                    width={1920}
+                                                    height={1080}
+                                                    className="w-full h-auto"
+                                                    priority={index === 0}
+                                                />
+                                            </div>
+                                            {caption && (
+                                                <figcaption className="mt-2 text-xs leading-relaxed text-gray-500 dark:text-gray-500">
+                                                    {caption}
+                                                </figcaption>
+                                            )}
+                                        </figure>
+                                    );
+                                })}
                             </div>
                         </div>
                         )}

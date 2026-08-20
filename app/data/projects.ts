@@ -15,7 +15,8 @@ export interface ProjectData {
     techIcons: { name: string; color: string }[];
     githubUrl: string;
     demoUrl?: string;
-    images: string[];
+    /** A plain path, or a figure with the caption that says what it proves. */
+    images: (string | { src: string; caption: string })[];
 }
 
 export const projectsData: ProjectData[] = [
