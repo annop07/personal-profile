@@ -26,6 +26,8 @@ export default function WorkExperience({ experiences }: WorkExperienceProps) {
                 return 'bg-orange-500/20 text-orange-400 border border-orange-500/30';
             case 'Competition':
                 return 'bg-pink-500/20 text-pink-400 border border-pink-500/30';
+            case 'Teaching Assistant':
+                return 'bg-teal-500/20 text-teal-400 border border-teal-500/30';
             default:
                 return 'bg-gray-500/20 text-gray-400 border border-gray-500/30';
         }

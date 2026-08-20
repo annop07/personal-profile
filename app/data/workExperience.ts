@@ -2,7 +2,7 @@ export interface WorkExperience {
     company: string;
     logo: string;
     position: string;
-    type: 'Internship' | 'Part-time' | 'Full-time' | 'Freelance' | 'Competition';
+    type: 'Internship' | 'Part-time' | 'Full-time' | 'Freelance' | 'Competition' | 'Teaching Assistant';
     duration: string;
     location?: string;
     description: string[];
@@ -28,7 +28,7 @@ export const workExperiences: WorkExperience[] = [
         company: 'Khon Kaen University',
         logo: '',
         position: 'Teaching Assistant',
-        type: 'Part-time',
+        type: 'Teaching Assistant',
         duration: 'Nov 2025 - Present',
         location: 'Khon Kaen, Thailand',
         description: [
