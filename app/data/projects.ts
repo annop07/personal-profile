@@ -142,11 +142,16 @@ export const projectsData: ProjectData[] = [
         ],
         githubUrl: 'https://github.com/annop07/new-savy',
         images: [
-            '/photos/savy-photo/main-dashboard.png',
-            '/photos/savy-photo/recipet-list.png',
-            '/photos/savy-photo/receipt-detail.png',
-            '/photos/savy-photo/manage-overview.png',
-            '/photos/savy-photo/manage-money.png',
+            {
+                src: '/photos/savy-ai/ask-rag.png',
+                caption:
+                    'Asked in Thai, answered from the receipts themselves — 1,318 baht of entertainment, split into the two that made it up, with the six retrieved receipts shown underneath. It also refuses the half it cannot support: no budget was set, so it says so rather than inventing one.',
+            },
+            {
+                src: '/photos/savy-ai/budget-advisor.png',
+                caption:
+                    'The advisor is an agent, not a prompt. It picked three tools — date, budget status, spending summary — ran three rounds, and came back with 1,318 against an 800 budget: 165%, over by 518, itemised down to the two purchases responsible.',
+            },
         ],
     },
     {
